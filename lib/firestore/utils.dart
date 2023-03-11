@@ -1,32 +1,13 @@
-import 'dart:io';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:path/path.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FireStoreUtils {
-  static void uploadFile(File _photo) {
-    if (_photo == null) return;
-    print(_photo.path);
-    final storage = FirebaseStorage.instanceFor(
-        bucket: "gs://testfirebase-46448.appspot.com");
-    final fileName = basename(_photo.path);
-    // Reference ref = FirebaseStorage.instance.ref("images");
-    Reference ref = storage.ref('images');
-    // ref.child(fileName).putFile(_photo).then((result) {
-    //   print("result: $result");
-    // });
-
-    // UploadTask task = ref.child(fileName).putFile(_photo);
-    // task.whenComplete(() => print("Done"));
-
-    UploadTask task = ref.child(fileName).putFile(_photo);
-    task.then((TaskSnapshot success) {
-      print("$success");
-    }, onError: (error) {
-      print("$error");
-    });
-
-    // ref.child(fileName).putFile(_photo).then((TaskSnapshot snapshot) {
-    //   print("result: ${snapshot.state}");
-    // });
+  static Future<void> pushData(String collection, Map<String, dynamic> data) {
+    CollectionReference collecInstance =
+        FirebaseFirestore.instance.collection(collection);
+    // Call the user's CollectionReference to add a new user
+    return collecInstance
+        .add(data)
+        .then((value) => print("Push link to firestore"))
+        .catchError((error) => print("Failed to Push link: $error"));
   }
 }
