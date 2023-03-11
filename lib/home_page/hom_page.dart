@@ -19,7 +19,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   XFile? image;
   TextEditingController controller = TextEditingController();
-  String file_name = "";
+  String file_name = "Default";
   @override
   void initState() {
     super.initState();
@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           .getDownloadURL()
                                           .then((value) {
                                         print(value);
-                                        FireStoreUtils.pushData("image",
+                                        FireStoreUtils.pushData("images",
                                             {"name": file_name, "link": value});
                                       });
                                     }, onError: (error) {
@@ -116,7 +116,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
-              Expanded(child: ListImage())
+              Expanded(
+                  child: ListImage(
+                collection: "images",
+              ))
             ],
           )),
     );

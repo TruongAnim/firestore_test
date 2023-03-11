@@ -8,6 +8,7 @@ class StorageUtils {
     final storage = FirebaseStorage.instanceFor(
         bucket: "gs://testfirebase-46448.appspot.com");
     final fileName = name ?? basename(_photo.path);
+    print("file name $fileName");
     // Reference ref = FirebaseStorage.instance.ref("images");
     Reference ref = storage.ref('images');
     // ref.child(fileName).putFile(_photo).then((result) {
