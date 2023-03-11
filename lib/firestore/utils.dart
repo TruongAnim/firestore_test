@@ -8,6 +8,6 @@ class FireStoreUtils {
     return collecInstance
         .add(data)
         .then((value) => print("Push link to firestore"))
-        .catchError((error) => print("Failed to Push link: $error"));
+        .catchError((error) => print("Failed to push link: $error"));
   }
 }
