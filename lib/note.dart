@@ -5,10 +5,10 @@
 // B5: add "apply plugin: 'com.google.gms.google-services'" to APP GRADEL
 // B6: add APP GRADLE dependencies: implementation platform('com.google.firebase:firebase-bom:31.2.3')
 // B7: Tạo Firestore, check quyền đọc ghi (allow read, write;)
-// B8: add   firebase_storage: ^11.0.15 firebase_core: ^2.7.1 to pubspec
-// B9: add   firebase_storage: ^11.0.15 firebase_core: ^2.7.1 to pubspec dependencies
-// B10: init app:   WidgetsFlutterBinding.ensureInitialized(); await Firebase.initializeApp();
-//
+// B8: add   firebase_storage: ^11.0.15 firebase_core: ^2.7.1 cloud_firestore: ^4.4.4 to pubspec dependencies
+// B9: init app:   WidgetsFlutterBinding.ensureInitialized(); await Firebase.initializeApp();
+// B10: Oke, lúc này có thể gửi nhận dữ liệu.
 // 
-// Note 1: Đây là storage, lưu trữ file, Không phải cloud firestore (1 loại khác của realtime database)
-// Note 2: Có thể tạo nhiều bucket trên storage, upload file lên các bucket khác nhau
+// Note 1: Đây là storage, lưu trữ file, sau đó lưu link và tên file thành danh sách trên firestore
+// Note 2: Firestore cũng là realtime database, na ná nhau. Mới ra chắc xịn hơn.
+// Note 3: Có thể tạo nhiều bucket trên storage, upload file lên các bucket khác nhau
